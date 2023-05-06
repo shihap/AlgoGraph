@@ -1,0 +1,123 @@
+Graph representation :
+Adjacency List:
+
+Procedure Adjacency-List(maxN, E):       // maxN denotes the maximum number of nodes
+edge[maxN] = Vector()                    // E denotes the number of edges
+for i from 1 to E
+    input -> x, y                        // Here x, y denotes there is an edge between x, y
+    edge[x].push(y)
+    edge[y].push(x)
+end for
+Return edge
+For weighted graph:
+Procedure Adjacency-List(maxN, E):
+edge[maxN] = Vector()
+cost[maxN] = Vector()
+for i from 1 to E
+    input -> x, y, w
+    edge[x].push(y)
+    cost[x].push(w)
+end for
+Return edge, cost
+******************************************************
+
+Minimum spanning tree:
+
+procedure kruskal(G,w)
+Input: A connected undirected graph G = (V,E) with edge weights we
+Output: A minimum spanning tree defined by the edges X
+for all u 2 V :
+makeset(u)
+X = fg
+Sort the edges E by weight
+for all edges fu, vg 2 E, in increasing order of weight:
+if find(u) 6= find(v):
+add edge fu, vg to X
+union(u,v)
+
+*******************************************************
+
+Graph coloring:
+Algorithm mColoring(k)
+
+{
+	repeat{
+		NextValue(k)
+		if(x[k]==0)then return
+		if(k==n)then write(x[1:n])
+		else
+			mColoring(k+1)
+		}until(false)
+}
+Algorithm Nextvalue(k)
+{
+`	repeat
+	{
+		x[k]=(x[k]+1)mod(m+1)  //next heighest node
+		if(x[k]==0) then return //color exhausted
+		for i=1 to n do
+		{
+			if(G[K,J]!=0)and(x[k]==x[j))
+				then break  //adjacent with same color
+		}
+		if(j==(n+1)) then return
+					//new color found
+	}until(false)     //otherwise findother
+}	
+
+**************************************************************
+
+hamilton's path circuit: 
+
+function check_all_permutations(adj[][], n)
+    for i = 0 to n
+        p[i]=i
+    while next permutation is possible
+        valid = true
+        for i = 0 to n-1
+            if adj[p[i]][p[i+1]] == false
+                valid = false
+                break
+        if valid == true
+            return true
+        p = get_next_permutation(p)
+    return false
+	
+***************************************************************
+
+Euler's path circuit:
+
+#circuit is a global array
+	find-euler-circuit
+	circuitpos=0
+	find_circuit(node 1)
+
+#nextnode and visited is a local array
+#the path will be found in reverse order
+	find_circuit(node i)
+	
+if node i has no neighbors then
+	circuit(circuitpos)=node i 
+	circuitpos=circuitpos+1
+else
+	while(node i has neighbors)
+		pick a random neighbor node j of node i
+		delete_edges(node j,node i)
+		find_circuit(node j)
+	circuit(circuitpos)=node i
+	circuitpos=circuitpos+1
+
+************************************************************
+
+travelling salesman problem:
+
+home_city=visited=current_city
+while(!visited All_city)
+	node=find_shortest_distance(current_node)
+	add_node(node)
+	current_node=node
+result=All node+home_city[0][last_visited_node]
+return final_reult= result
+
+*************************************************************
+
